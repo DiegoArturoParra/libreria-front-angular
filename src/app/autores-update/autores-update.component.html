@@ -1,0 +1,23 @@
+<div>
+  <div *ngIf="autor.Id" class="edit-form">
+    <div class="form-group">
+      <label for="title">Nombre</label>
+      <input type="text" class="form-control" required [(ngModel)]="autor.Nombre" name="title" />
+    </div>
+    <div class="form-group">
+      <label>Apellido</label>
+      <input type="text" class="form-control" required [(ngModel)]="autor.Apellido" />
+    </div>
+    <div class="form-group">
+      <label>Edad</label>
+      <input type="number" class="form-control" required [(ngModel)]="autor.Edad" />
+    </div>
+    <button (click)="saveAutor()" class="btn btn-success">Guardar</button>
+  </div>
+  <div *ngIf="!autor.Id">
+    <br />
+    <div class="alert alert-info mt-5">
+      <strong>No existe este autor...</strong>
+    </div>
+  </div>
+</div>

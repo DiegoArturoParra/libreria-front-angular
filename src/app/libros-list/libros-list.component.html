@@ -1,0 +1,83 @@
+<div class="list row">
+  <div class="col-md-6">
+    <h4>Listado de Libros</h4>
+    <div *ngIf="!libros">
+      <div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let libro of libros; let i = index" [class.active]="i == currentIndex"
+        (click)="setActiveLibro(libro, i)">
+        {{ libro.Nombre }}
+      </li>
+    </ul>
+    <a class="m-3 btn btn-sm btn-dark" routerLink="/libros/agregar">
+      Registrar Libro
+    </a>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="actualLibro.Id">
+      <h4>Libro</h4>
+      <div>
+        <label><strong>Nombre:</strong>
+          {{ actualLibro.Nombre }}
+        </label>
+      </div>
+      <div>
+        <label><strong>ISBN:</strong>
+          {{ actualLibro.ISBN }}
+        </label>
+      </div>
+      <div>
+        <label><strong>Fecha De Publicación:</strong>
+          {{ actualLibro.FechaSalida }}
+        </label>
+      </div>
+      <div>
+        <label><strong>Numero de páginas:</strong>
+          {{ actualLibro.NumeroDePaginas}}
+        </label>
+      </div>
+      <div>
+        <label><strong>Descripción:</strong>
+          {{ actualLibro.Descripcion}}
+        </label>
+      </div>
+
+      <a class="badge badge-info p-3" routerLink="/libros/editar/{{ actualLibro.Id }}">
+        Editar
+      </a>
+      <button class="m-3 btn btn-sm btn-danger" (click)="eliminarLibro(actualLibro.Id)">
+        Eliminar
+      </button>
+
+      <button type="button" class="btn btn-dark" (click)="verAutor(actualLibro.AutorId)">
+        Ver Autor
+      </button>
+
+    </div>
+
+    <div *ngIf="!actualLibro.Id">
+      <div class="alert alert-info mt-5">
+        <div *ngIf="!libros">
+          <strong>No hay libros.</strong>
+        </div>
+        <div *ngIf="libros">
+          <div *ngIf="libros.length > 0">
+            <div class="text-center">
+              <strong>Haga clic en un libro para ver la información.</strong>
+            </div>
+          </div>
+          <div *ngIf="libros.length == 0">
+            <div class="text-center">
+              <strong>No hay libros.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

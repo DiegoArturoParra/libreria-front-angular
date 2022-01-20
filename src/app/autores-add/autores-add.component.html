@@ -1,0 +1,17 @@
+<div>
+  <div class="submit-form">
+    <div class="form-group">
+      <label for="title">Nombre</label>
+      <input type="text" class="form-control" required [(ngModel)]="autor.Nombre" name="title" />
+    </div>
+    <div class="form-group">
+      <label>Apellido</label>
+      <input type="text" class="form-control" required [(ngModel)]="autor.Apellido" />
+    </div>
+    <div class="form-group">
+      <label>Edad</label>
+      <input type="number" min="18" class="form-control" [(ngModel)]="autor.Edad" />
+    </div>
+    <button (click)="saveAutor()" class="btn btn-success">Guardar</button>
+  </div>
+</div>
